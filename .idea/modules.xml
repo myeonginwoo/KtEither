@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Either/Either.iml" filepath="$PROJECT_DIR$/Either/Either.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/KtEither.iml" filepath="$PROJECT_DIR$/.idea/modules/KtEither.iml" />
     </modules>
   </component>
