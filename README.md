@@ -16,7 +16,7 @@ println(rightEither.right?.get) // 6
 
 ```
 
-try-cahtch
+try-catch
 ```kotlin
 val stringValue = "test"
 val either: Either<String, Int> = try {
