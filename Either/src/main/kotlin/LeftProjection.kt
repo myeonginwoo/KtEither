@@ -11,9 +11,9 @@ class LeftProjection<out L,out R>(val value: L) {
         return LeftProjection(f(value))
     }
 
-    fun filter(predicate: (L) -> Boolean) : L? {
+    fun filter(predicate: (L) -> Boolean) : LeftProjection<L, R>? {
         return if(predicate(value)) {
-            return value
+            return LeftProjection(value)
         } else {
             null
         }

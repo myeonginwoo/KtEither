@@ -54,7 +54,7 @@ class EitherTest {
     @Test fun leftFilterTest() {
         val either: Either<String, Int> = Left("left")
 
-        assertEquals(either.left?.filter { it.length > 3 }, "left")
+        assertEquals(either.left?.filter { it.length > 3 }?.get, "left")
         assertEquals(either.left?.filter { it.length > 5 }, null)
         assertEquals(either.left?.filter { it.length > 5 } ?: "default", "default")
     }
@@ -62,7 +62,7 @@ class EitherTest {
     @Test fun rightFilterTest() {
         val either: Either<String, Int> = Right(126)
 
-        assertEquals(either.right?.filter { it > 100 }, 126)
+        assertEquals(either.right?.filter { it > 100 }?.get, 126)
         assertEquals(either.right?.filter { it < 100 }, null)
         assertEquals(either.right?.filter { it < 100 } ?: -1, -1)
     }
