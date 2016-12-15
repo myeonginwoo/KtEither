@@ -12,18 +12,42 @@ import org.junit.Test
 class EitherTest {
 
     @Test fun leftTest() {
-        val left: Either<String, Int> = Left("test")
-        assertEquals("test", left.get())
-        assertEquals(true, left.isLeft)
-        assertEquals(false, left.isRight)
-        assertEquals(null, left.right?.get())
+        val eitherLeft: Either<String, Int> = Left("test")
+        assertEquals("test", eitherLeft.left?.get)
+        assertEquals(true, eitherLeft.isLeft)
+        assertEquals(false, eitherLeft.isRight)
     }
 
     @Test fun rightTest() {
-        val right: Either<String, Int> = Right(6)
-        assertEquals(6, right.get())
-        assertEquals(false, right.isLeft)
-        assertEquals(true, right.isRight)
-        assertEquals(null, right.left?.get())
+        val rightEither: Either<String, Int> = Right(6)
+        assertEquals(6, rightEither.right?.get)
+        assertEquals(false, rightEither.isLeft)
+        assertEquals(true, rightEither.isRight)
+    }
+
+    @Test fun tryTest() {
+        val stringValue = "test"
+        val either: Either<String, Int> = try {
+            Right(stringValue.toInt())
+        } catch (e: Exception) {
+            Left(e.toString())
+        }
+
+        assertEquals(true, either.isLeft)
+        assertEquals(false, either.isRight)
+    }
+
+    @Test fun leftMapTest() {
+        val either: Either<String, Int> = Left("123")
+
+        assertEquals(123, either.left?.map(String::toInt)?.get)
+        assertEquals("123test", either.left?.map { it + "test" }?.get)
+    }
+
+    @Test fun rightMapTest() {
+        val either: Either<String, Int> = Right(123)
+
+        assertEquals(123.0, either.right?.map(Int::toDouble)?.get)
+        assertEquals(246, either.right?.map { it * 2 }?.get)
     }
 }
