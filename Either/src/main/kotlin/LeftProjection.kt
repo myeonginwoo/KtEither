@@ -10,4 +10,12 @@ class LeftProjection<out L,out R>(val value: L) {
     fun <X> map(f: (L) -> X): LeftProjection<X, R> {
         return LeftProjection(f(value))
     }
+
+    fun filter(predicate: (L) -> Boolean) : L? {
+        return if(predicate(value)) {
+            return value
+        } else {
+            null
+        }
+    }
 }

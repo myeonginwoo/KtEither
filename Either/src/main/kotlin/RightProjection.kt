@@ -10,4 +10,12 @@ class RightProjection<out L, out R>(val value: R) {
     fun <X : Any> map(f: (R) -> X): RightProjection<L, X> {
         return RightProjection(f(value))
     }
+
+    fun filter(predicate: (R) -> Boolean) : R? {
+        return if(predicate(value)) {
+            return value
+        } else {
+            null
+        }
+    }
 }
