@@ -22,4 +22,8 @@ class LeftProjection<out L, out R>(val value: L) {
     fun exists(f: (L) -> Boolean): Boolean {
         return f(value)
     }
+
+    fun <X, R1> flatMap(f: (L) -> Either<X, R1>): Either<X, R1> {
+        return f(value)
+    }
 }

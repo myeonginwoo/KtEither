@@ -75,7 +75,7 @@ class EitherTest {
         assertEquals(rightEither.fold({ "Left is $it" }, { it * 3 }), 18)
     }
 
-    @Test fun existsTesT() {
+    @Test fun existsTest() {
         val leftEither: Either<String, Int> = Left("test")
         assertEquals(leftEither.left?.exists { it.length == 4 }, true)
         assertEquals(leftEither.left?.exists { it.length > 4 }, false)
@@ -83,5 +83,13 @@ class EitherTest {
         val rightEither: Either<String, Int> = Right(6)
         assertEquals(rightEither.right?.exists { it > 5 }, true)
         assertEquals(rightEither.right?.exists { it < 5 }, false)
+    }
+
+    @Test fun flatMapTest() {
+        val leftEither: Either<String, Int> = Left("test")
+        assertEquals(leftEither.left?.flatMap { Left<Int, Long>(3) }?.left?.get, 3)
+
+        val rightEither: Either<String, Int> = Right(6)
+        assertEquals(rightEither.right?.flatMap { Right<Int, String>("test") }?.right?.get, "test")
     }
 }

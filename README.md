@@ -70,3 +70,12 @@ val rightEither: Either<String, Int> = Right(6)
 assertEquals(rightEither.right?.exists { it > 5 }, true)
 assertEquals(rightEither.right?.exists { it < 5 }, false)
 ```
+
+flatmap
+```kotlin
+val leftEither: Either<String, Int> = Left("test")
+assertEquals(leftEither.left?.flatMap { Left<Int, Long>(3) }?.left?.get, 3)
+
+val rightEither: Either<String, Int> = Right(6)
+assertEquals(rightEither.right?.flatMap { Right<Int, String>("test") }?.right?.get, "test")
+```
