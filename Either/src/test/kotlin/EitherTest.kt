@@ -74,4 +74,14 @@ class EitherTest {
         val rightEither: Either<String, Int> = Right(6)
         assertEquals(rightEither.fold({ "Left is $it" }, { it * 3 }), 18)
     }
+
+    @Test fun existsTesT() {
+        val leftEither: Either<String, Int> = Left("test")
+        assertEquals(leftEither.left?.exists { it.length == 4 }, true)
+        assertEquals(leftEither.left?.exists { it.length > 4 }, false)
+
+        val rightEither: Either<String, Int> = Right(6)
+        assertEquals(rightEither.right?.exists { it > 5 }, true)
+        assertEquals(rightEither.right?.exists { it < 5 }, false)
+    }
 }
