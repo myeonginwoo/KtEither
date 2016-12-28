@@ -26,6 +26,15 @@ val either: Either<String, Int> = try {
 }
 ```
 
+fold
+```kotlin
+val leftEither: Either<String, Int> = Left("test")
+println(leftEither.fold({ "Left is $it" }, { it * 3 }))  // "Left is test"
+
+val rightEither: Either<String, Int> = Right(6)
+pirntln(rightEither.fold({ "Left is $it" }, { it * 3 })) // 18)
+```
+
 map
 ```kotlin
 //left
