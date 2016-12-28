@@ -18,4 +18,8 @@ class RightProjection<out L, out R>(val value: R) {
             null
         }
     }
+
+    fun exists(f: (R) -> Boolean): Boolean {
+        return f(value)
+    }
 }

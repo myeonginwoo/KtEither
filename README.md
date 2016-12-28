@@ -59,3 +59,14 @@ val either: Either<String, Int> = Right(126)
 println(either.right?.filter { it > 100 }?.get)     //126
 println(either.right?.filter { it < 100 }?.get)     //null
 ```
+
+exists
+```kotlin
+val leftEither: Either<String, Int> = Left("test")
+assertEquals(leftEither.left?.exists { it.length == 4 }, true)
+assertEquals(leftEither.left?.exists { it.length > 4 }, false)
+
+val rightEither: Either<String, Int> = Right(6)
+assertEquals(rightEither.right?.exists { it > 5 }, true)
+assertEquals(rightEither.right?.exists { it < 5 }, false)
+```
