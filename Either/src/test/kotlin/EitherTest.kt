@@ -12,10 +12,10 @@ import org.junit.Test
 class EitherTest {
 
     @Test fun leftTest() {
-        val eitherLeft: Either<String, Int> = Left("test")
-        assertEquals("test", eitherLeft.left?.get)
-        assertEquals(true, eitherLeft.isLeft)
-        assertEquals(false, eitherLeft.isRight)
+        val leftEither: Either<String, Int> = Left("test")
+        assertEquals("test", leftEither.left?.get)
+        assertEquals(true, leftEither.isLeft)
+        assertEquals(false, leftEither.isRight)
     }
 
     @Test fun rightTest() {
@@ -65,5 +65,13 @@ class EitherTest {
         assertEquals(either.right?.filter { it > 100 }?.get, 126)
         assertEquals(either.right?.filter { it < 100 }, null)
         assertEquals(either.right?.filter { it < 100 } ?: -1, -1)
+    }
+
+    @Test fun foldTest() {
+        val leftEither: Either<String, Int> = Left("test")
+        assertEquals(leftEither.fold({ "Left is $it" }, { it * 3 }), "Left is test")
+
+        val rightEither: Either<String, Int> = Right(6)
+        assertEquals(rightEither.fold({ "Left is $it" }, { it * 3 }), 18)
     }
 }
