@@ -1,7 +1,7 @@
 # KtEither
 Kotlin Either Lib
 
-inProgress...
+[![](https://jitpack.io/v/myeonginwoo/KtEither.svg)](https://jitpack.io/#myeonginwoo/KtEither)
 
 Left
 ```kotlin
