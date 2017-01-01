@@ -33,5 +33,5 @@ dependencies {
 }
 
 dependencies {
-    compile 'com.github.myeonginwoo:KtEither:0.1.0'
+    compile 'com.github.myeonginwoo:KtEither:0.1.1'
 }
