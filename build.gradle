@@ -5,18 +5,21 @@ buildscript {
     ext.kotlin_version = '1.0.5-2'
 
     repositories {
-        mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
-apply plugin: 'kotlin'
-
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
 }
+
+apply plugin: 'kotlin'
 
 sourceSets {
     main.kotlin.srcDirs += 'src/main/kotlin'
@@ -27,4 +30,8 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     testCompile 'junit:junit:4.12'
+}
+
+dependencies {
+    compile 'com.github.myeonginwoo:KtEither:0.1.0'
 }
