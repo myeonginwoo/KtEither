@@ -1,0 +1,10 @@
+ext {
+    buildToolsVersion = '25.0.2'
+    minSdkVersion = 14
+    compileSdkVersion = 25
+
+    // Dependencies
+    assertj = 'org.assertj:assertj-core:1.2.0'
+    junit = 'junit:junit:4.12'
+    kotlin = 'org.jetbrains.kotlin:kotlin-stdlib:1.0.6'
+}
