@@ -3,6 +3,7 @@ buildscript {
 
     repositories {
         mavenCentral()
+        maven { url "https://jitpack.io" }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -11,9 +12,6 @@ buildscript {
 
 group 'myeonginwoo'
 version '1.0.0'
-
-
-
 
 apply plugin: 'kotlin'
 // Apply the java plugin to add support for Java
@@ -30,7 +28,6 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testCompile 'junit:junit:4.12'
 }
-
 
 // custom tasks for creating source/javadoc jars
 task sourcesJar(type: Jar, dependsOn: classes) {
@@ -83,7 +80,7 @@ publishing {
                 root.children().last() + pomConfig
             }
             from components.java
-            groupId 'io.github.myeongin'
+            groupId 'com.github.myeongin'
             artifactId 'KtEither'
             version "1.0.0"
 
