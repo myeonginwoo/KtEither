@@ -3,6 +3,22 @@ Kotlin Either Lib
 
 [![](https://jitpack.io/v/myeonginwoo/KtEither.svg)](https://jitpack.io/#myeonginwoo/KtEither)
 
+### Installation
+```
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+	
+dependencies {
+    	compile 'com.github.myeonginwoo:KtEither:1.0.0'
+}
+
+```
+
+### Examples
 Left
 ```kotlin
 val eitherLeft: Either<String, Int> = Left("test")
