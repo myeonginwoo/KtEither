@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.myeonginwoo</groupId>
+    <artifactId>KtEither</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>KtEither</name>
+    <description>Kotlin Either like scala Either</description>
+    <url>http://github.com/myeonginwoo/KtEither</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>LazySoul</name>
+            <email>myeonginwoo@gmail.com</email>
+            <organization>GitHub</organization>
+            <organizationUrl>http://github.com/myeonginwoo</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/myeonginwoo/KtEither.git</connection>
+        <developerConnection>scm:git:ssh://github.com:myeonginwoo/KtEither.git
+        </developerConnection>
+        <url>http://github.com/myeonginwoo/KtEither/tree/master</url>
+    </scm>
+</project>

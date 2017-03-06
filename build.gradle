@@ -1,30 +1,91 @@
-group 'lazysoul'
-version '0.1'
-
 buildscript {
-    ext.kotlin_version = '1.0.5-2'
+    ext.kotlin_version = '1.1.0'
 
     repositories {
         mavenCentral()
+        maven { url "https://jitpack.io" }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
+group 'myeonginwoo'
+version '1.0.0'
+
 apply plugin: 'kotlin'
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+sourceCompatibility = 1.6
 
 repositories {
     mavenCentral()
 }
 
-sourceSets {
-    main.kotlin.srcDirs += 'src/main/kotlin'
-    test.kotlin.srcDirs += 'src/test/kotlin'
-}
-
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
     testCompile 'junit:junit:4.12'
+}
+
+// custom tasks for creating source/javadoc jars
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+// add javadoc/source jar tasks as artifacts
+artifacts {
+    archives sourcesJar, javadocJar
+}
+
+def pomConfig = {
+    name "KtEither"
+    description "KtEither $version - Kotlin Either like scala Either"
+    url "https://github.com/myeonginwoo/KtEither"
+
+    scm {
+        url "https://github.com/myeonginwoo/KtEither"
+        connection "scm:git:git://github.com/myeonginwoo/KtEither.git"
+        developerConnection "scm:git:ssh://github.com:myeonginwoo/KtEither.git"
+    }
+    licenses {
+        license {
+            name "The Apache Software License, Version 2.0"
+            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+    }
+    developers {
+        developer {
+            name "LazySoul"
+            email "myeonginwoo@gmail.com"
+            organization "github"
+            organizationUrl "http://www.github.com"
+        }
+    }
+}
+
+publishing {
+    publications {
+        MyPublication(MavenPublication) {
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', "KtEither 1.0.0 - Kotlin Either like scala Either")
+                root.children().last() + pomConfig
+            }
+            from components.java
+            groupId 'com.github.myeongin'
+            artifactId 'KtEither'
+            version "1.0.0"
+
+            artifact sourcesJar
+            artifact javadocJar
+        }
+    }
 }
